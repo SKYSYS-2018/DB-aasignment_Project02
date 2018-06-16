@@ -1,3 +1,14 @@
+<?php
+	
+session_start();
+require_once('inc/config.php');
+
+if(!isset($_SESSION['usertype'])) {
+	header("location: ./pages/login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -15,8 +26,17 @@
 		<div class="container title-box border-default">
 			<a href="./index.php"><div class="title left">UNIVERSITY SYSTEM</div></a>
 			<div class="logview-box right">
-				<div class="logview-label text-center"> LOGGED AS ADMIN </div>
-				<div class="logview-btn text-center"> LOG OUT </div>
+				<!-- Logged user view and logout button -->
+				<?php
+				echo "<div class='logview-label text-center'> LOGGED AS ";
+				if($_SESSION["usertype"]==1){
+					echo "ADMIN"; 
+				} elseif ($_SESSION["usertype"]==2) {
+					echo "STUDENT";
+				}
+				echo" </div>";
+				echo "<a href='./pages/logout.php'><div class='logview-btn text-center'> LOG OUT </div></a>";
+				?>				
 			</div>
 		</div>
 
