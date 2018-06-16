@@ -26,7 +26,7 @@ $depcon=mysqli_query($connection,$depquery);
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
 	<style type="text/css">
 		.sub-page-table th,td {
-			width: 12.5%;
+			width: 16.5%;
 		}
 	</style>
 </head>
@@ -73,9 +73,7 @@ $depcon=mysqli_query($connection,$depquery);
 						<th>Name</th>
 						<th>Contact</th>
 						<th>Head</th>
-						<th>Street No</th>
-						<th>Street</th>
-						<th>City</th>
+						<th>Location</th>
 						<th>Actions</th>
 					</tr>
 
@@ -89,9 +87,7 @@ $depcon=mysqli_query($connection,$depquery);
 								<td>$department[depName]</td>
 								<td>$department[depPhone]</td>
 								<td>$department[profFName] $department[proLName]</td>
-								<td>$department[locStreeNo]</td>
-								<td>$department[locStreet]</td>
-								<td>$department[locCity]</td>
+								<td>$department[locStreeNo] , $department[locStreet] , $department[locCity]</td>
 								<td>
 									<button class='table-btn'>EDIT</button>
 									<button class='table-btn'>DELETE</button>
