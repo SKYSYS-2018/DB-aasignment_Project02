@@ -40,9 +40,16 @@
 
 .sub-page-table th {
 	background-color: rgba(80,180,220,0.6);
+	min-height: 30px;
 }
 
 .sub-page-table td {
 	background-color: rgba(220,220,220,0.6);
+	min-height: 30px;
+}
+
+.table-btn {
+	font-size: 10px;
+	font-weight: bold;
 }
 /*--------------Sub Page Styles end---------------*/

@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+require_once('../inc/config.php');
+
+if(!isset($_SESSION['usertype'])){
+	header("location: ./login.php");
+}
+
+// -----------------SELECT Quaries----------------------------//
+
+$depquery="SELECT D.depID,D.depName,D.depPhone,P.profFName,P.proLName,L.locStreeNo,L.locStreet,L.locCity 
+		FROM departments AS D LEFT OUTER JOIN location AS L ON D.locationID = L.locationID 
+		LEFT OUTER JOIN professors AS P ON D.profID = P.profID;";
+
+$depcon=mysqli_query($connection,$depquery);
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +24,11 @@
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
+	<style type="text/css">
+		.sub-page-table th,td {
+			width: 12.5%;
+		}
+	</style>
 </head>
 
 <body>
@@ -46,17 +69,38 @@
 			<div class="sub-page-box">
 				<table class="container sub-page-table text-center">
 					<tr>
-						<th>Column 1</th>
-						<th>Column 2</th>
-						<th>Column 3</th>
-						<th>Column 4</th>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Contact</th>
+						<th>Head</th>
+						<th>Street No</th>
+						<th>Street</th>
+						<th>City</th>
+						<th>Actions</th>
 					</tr>
-					<tr>
-						<td>data 1</td>
-						<td>data 2</td>
-						<td>data 3</td>
-						<td>data 4</td>
-					</tr>
+
+					<!-- Show Department and Location Table Data -->
+					<?php
+						$row="";
+						if(mysqli_num_rows($depcon)>0){
+							while($department=mysqli_fetch_assoc($depcon)){
+								$row=$row."<tr>
+								<td>$department[depID]</td>
+								<td>$department[depName]</td>
+								<td>$department[depPhone]</td>
+								<td>$department[profFName] $department[proLName]</td>
+								<td>$department[locStreeNo]</td>
+								<td>$department[locStreet]</td>
+								<td>$department[locCity]</td>
+								<td>
+									<button class='table-btn'>EDIT</button>
+									<button class='table-btn'>DELETE</button>
+								</td>
+								</tr>";
+							}
+							echo $row;
+						}
+					?>
 				</table>
 			</div>
 
