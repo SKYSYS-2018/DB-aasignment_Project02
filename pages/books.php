@@ -1,3 +1,29 @@
+<?php
+
+if (isset($_POST['addBook'])) {
+	
+	require_once('../inc/config.php');
+
+	$bookID=$_POST['bookID'];
+    $bookISBN=$_POST['bookISBN'];
+    $bookYear=$_POST['bookYear'];
+    $bookTitle=$_POST['bookTitle'];
+    $bookPublisher=$_POST['bookPublisher'];
+    $profID=$_POST['profID'];
+    
+    $query="INSERT INTO book VALUES('$bookID','$bookISBN','$bookYear','$bookTitle','$bookPublisher','$profID')";
+
+    $userquery=mysqli_query($connection,$query);
+    echo "hello";
+    if($userquery){
+        echo "<script>alert('Book added successfully!')</script>";
+        header("location: books.php");
+    }else{
+        echo "<script>alert('Try again')</script>";
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -6,6 +32,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
+    <link rel="stylesheet" type="text/css" href="../css/book.css">
+    <script src="../js/add_book.js"></script>
 </head>
 
 <body>
@@ -40,27 +68,64 @@
 			</div>
 
 			<div class="sub-page-box">
-				<button class="sub-page-btn border-default"> Add a New Book </button>
+				<button name="add_new_book" class="sub-page-btn border-default" onclick="show_add_book()"> Add a New Book </button>
 			</div>
 
 			<div class="sub-page-box">
 				<table class="container sub-page-table text-center">
 					<tr>
-						<th>Column 1</th>
-						<th>Column 2</th>
-						<th>Column 3</th>
-						<th>Column 4</th>
+                        <th>Book ID</th>
+						<th>Book ISBN</th>
+						<th>Book Year</th>
+                        <th>Book Title</th>
+						<th>Book Publisher</th>
+						<th>Book Co-Authoring Proffessor ID</th>
 					</tr>
-					<tr>
-						<td>data 1</td>
-						<td>data 2</td>
-						<td>data 3</td>
-						<td>data 4</td>
-					</tr>
+					
+                        <?php
+                            require_once('../inc/config.php');
+                            $query="SELECT * FROM book";
+                        $userquery=mysqli_query($connection,$query);
+                        if(mysqli_num_rows($userquery)>0){
+                            while($row=mysqli_fetch_assoc($userquery)){
+                                    echo "<tr><td>".$row['bookID']."</td>";
+                                    echo "<td>".$row['bookISBN']."</td>";
+                                    echo "<td>".$row['bookYear']."</td>";
+                                    echo "<td>".$row['bookTitle']."</td>";
+                                    echo "<td>".$row['bookPublisher']."</td>";
+                                    echo "<td>".$row['profID']."</td></tr>";
+                                }                            
+                            }
+                        ?>
+					
 				</table>
 			</div>
 
 		</div>
+        <div id="add_book" style="display:none" class="container sub-page border-default">
+            <form action="books.php" autocomplete="on" method="POST">
+                <!-- Input for Book ID -->
+                <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
+                
+                <!-- Input for Book ISBN -->
+                <input type="text" name="bookISBN" class="container inputs border-default" placeholder="Book ISBN" required/>
+
+                <!-- Input for Book Year -->
+                <input type="text" name="bookYear" class="container inputs border-default" placeholder="Book Year" required/>
+
+                <!-- Input for Book Title -->
+                <input type="text" name="bookTitle" class="container inputs border-default" placeholder="Book Title" required/>
+
+                <!-- Input for Book Publisher -->
+                <input type="text" name="bookPublisher" class="container inputs border-default" placeholder="Book Publisher" required/>
+
+                <!-- Input for Book Co-Author Proffessor ID -->
+                <input type="text" name="profID" class="container inputs border-default" placeholder="Book Co-Author Proffessor ID" required/>
+
+                <!-- Login Button -->
+                <button name="addBook" class="container btn">Add Book </button>
+		  </form>
+        </div>
 
 	</div>
 
