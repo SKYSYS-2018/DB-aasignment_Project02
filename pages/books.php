@@ -32,8 +32,7 @@ if (isset($_POST['addBook'])) {
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
-    <link rel="stylesheet" type="text/css" href="../css/addform.css">
-    <script src="../js/add_form.js"></script>
+
 </head>
 
 <body>
@@ -68,7 +67,7 @@ if (isset($_POST['addBook'])) {
 			</div>
 
 			<div class="sub-page-box">
-				<button name="add_new_book" class="sub-page-btn border-default" onclick="show_add_book()"> Add a New Book </button>
+				<button name="add_new_book" class="sub-page-btn border-default" onclick="show_div()"> Add a New Book </button>
 			</div>
 
 			<div class="sub-page-box">
@@ -97,14 +96,10 @@ if (isset($_POST['addBook'])) {
                                 }                            
                             }
                         ?>
-					
 				</table>
 			</div>
-
 		</div>
 
-        <!-- Add Book Form -->
-        <div id="add_book" style="display:none;" class="container sub-page border-default">
             <form action="books.php" autocomplete="on" method="POST">
                 <!-- Input for Book ID -->
                 <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
