@@ -1,3 +1,9 @@
+<?php
+
+$usertype=$_SESSION['usertype'];
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,18 +35,36 @@
 					echo "STUDENT";
 				}
 				echo" </div>";
-				echo "<a href='./pages/logout.php'><div class='logview-btn text-center'> LOG OUT </div></a>";
+				echo "<a href='logout.php'><div class='logview-btn text-center'> LOG OUT </div></a>";
 				?>				
 			</div>
 		</div>
 
 		<!-- Navigation Panel -->
 		<div class="container nav-panel border-default">
-			<a href="./departments.php" class="nav-item-leftmost text-center"> DEPARTMENTS </a>
-			<a href="./students.php" class="nav-item text-center"> STUDENTS </a>
-			<a href="./courses.php" class="nav-item text-center"> COURSES </a>
-			<a href="./professors.php" class="nav-item text-center"> PROFESSORS </a>
-			<a href="./company_sessions.php" class="nav-item text-center" > COMPANY SESSIONS </a>
-			<a href="./books.php" class="nav-item text-center"> BOOKS </a>
-			<a href="./lab_sessions.php" class="nav-item-rightmost text-center"> LAB SESSIONS </a>
+			<!-- Check the Usertype and Rebuild the Navigation Menu -->
+			<?php 
+
+				//Admin Menu
+				if ($usertype==1){
+					echo "<a href='./departments.php' class='nav-item-leftmost text-center'> DEPARTMENTS </a>";
+					echo "<a href='./students.php' class='nav-item text-center'> STUDENTS </a>";
+					echo "<a href='./courses.php' class='nav-item text-center'> COURSES </a>";
+					echo "<a href='./professors.php' class='nav-item text-center'> PROFESSORS </a>";
+					echo "<a href='./company_sessions.php' class='nav-item text-center' > COMPANY SESSIONS </a>";
+					echo "<a href='./bookmenu.php' class='nav-item text-center'> BOOKS </a>";
+					echo "<a href='./lab_sessions.php' class='nav-item-rightmost text-center'> LAB SESSIONS </a>";
+				}
+				//Student Menu
+				elseif($usertype==2){
+					echo "<a href='./courses.php' class='nav-item text-center'> COURSES </a>";
+					echo "<a href='./studentbooks.php' class='nav-item text-center'> BOOKS </a>";
+					echo "<a href='./lab_sessions.php' class='nav-item-rightmost text-center'> LAB SESSIONS </a>";
+				}
+				//Librarian Menu
+				else{
+					echo "<a href='./bookmenu.php' class='nav-item text-center'> BOOKS </a>";
+				}
+			?>	
+
 		</div>

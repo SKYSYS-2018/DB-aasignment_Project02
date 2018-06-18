@@ -15,9 +15,9 @@ $stdquery="SELECT S.stdID,S.stdFName,S.stdLName,S.stdStreetNo,S.stdStreet,S.stdC
 
 $stdcon=mysqli_query($connection,$stdquery);
 
-?>
+require_once('layout/header.php'); 
 
-<?php require_once('layout/header.php'); ?>
+?>
 
 		<!-- Sub Page -->
 		<div class="container sub-page border-default">

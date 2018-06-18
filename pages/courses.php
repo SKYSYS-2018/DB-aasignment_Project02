@@ -1,4 +1,7 @@
-<?php require_once('layout/header.php'); ?>
+<?php 
+session_start();
+require_once('layout/header.php'); 
+?>
 
 		<!-- Sub Page -->
 		<div class="container sub-page border-default">

@@ -33,7 +33,7 @@ if (isset($_POST['addBook'])) {
 		<div class="container sub-page border-default">
 
 			<div class="sub-page-box">
-				<div class="container sub-page-title text-center border-default"> BOOKS </div>
+				<div class="container sub-page-title text-center border-default"> TEACHING BOOKS </div>
 			</div>
 
 			<div class="sub-page-box">
@@ -69,32 +69,6 @@ if (isset($_POST['addBook'])) {
 				</table>
 			</div>
 		</div>
-
-            <form action="books.php" autocomplete="on" method="POST">
-                <!-- Input for Book ID -->
-                <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
-                
-                <!-- Input for Book ISBN -->
-                <input type="text" name="bookISBN" class="container inputs border-default" placeholder="Book ISBN" required/>
-
-                <!-- Input for Book Year -->
-                <input type="text" name="bookYear" class="container inputs border-default" placeholder="Book Year" required/>
-
-                <!-- Input for Book Title -->
-                <input type="text" name="bookTitle" class="container inputs border-default" placeholder="Book Title" required/>
-
-                <!-- Input for Book Publisher -->
-                <input type="text" name="bookPublisher" class="container inputs border-default" placeholder="Book Publisher" required/>
-
-                <!-- Input for Book Co-Author Proffessor ID -->
-                <input type="text" name="profID" class="container inputs border-default" placeholder="Book Co-Author Proffessor ID" required/>
-
-                <!-- Login Button -->
-                <div class="btn-group">
-                    <button name="cancelBook" class="btn left" onclick="hide_add_book()"> Cancel </button>
-                    <button name="addBook" class="btn right"> Add Book </button>
-                </div>
-		  </form>
         </div>
 
 	</div>

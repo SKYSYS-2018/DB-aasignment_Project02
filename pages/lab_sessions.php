@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (isset($_POST['add_lab_session'])) {
 	
 	require_once('../inc/config.php');
@@ -26,9 +28,9 @@ if (isset($_POST['add_lab_session'])) {
     }
 }
 
-?>
+require_once('layout/header.php'); 
 
-<?php require_once('layout/header.php'); ?>
+?>
 		<!-- Sub Page -->
 		<div class="container sub-page border-default">
 

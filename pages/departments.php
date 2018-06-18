@@ -14,9 +14,8 @@ $depquery="SELECT D.depID,D.depName,D.depPhone,P.profFName,P.proLName,L.locStree
 		LEFT OUTER JOIN professors AS P ON D.profID = P.profID;";
 
 $depcon=mysqli_query($connection,$depquery);
-?>
 
-<?php require_once('layout/header.php'); ?>
+require_once('layout/header.php'); ?>
 
 		<!-- Sub Page -->
 		<div class="container sub-page border-default">
