@@ -2,26 +2,13 @@
 
 session_start();
 
-if (isset($_POST['addBook'])) {
-	
-	require_once('../inc/config.php');
-
-	$bookID=$_POST['bookID'];
-    $bookISBN=$_POST['bookISBN'];
-    $bookYear=$_POST['bookYear'];
-    $bookTitle=$_POST['bookTitle'];
-    $bookPublisher=$_POST['bookPublisher'];
-    $profID=$_POST['profID'];
-    
-    $query="INSERT INTO book VALUES('$bookID','$bookISBN','$bookYear','$bookTitle','$bookPublisher','$profID')";
-
-    $userquery=mysqli_query($connection,$query);
-    // echo "hello";
-    if($userquery){
-        echo "<script>alert('Book added successfully!')</script>";
-        header("location: books.php");
+if(isset($_SESSION['usertype'])){
+    $usertype=$_SESSION['usertype'];
+    $userid=$_SESSION['userid'];
+    if($usertype==2){
+        $query="SELECT * FROM stud_book_borrow WHERE stdID=$userid";
     }else{
-        echo "<script>alert('Try again')</script>";
+        $query="SELECT * FROM stud_book_borrow ORDER BY issuedDate ASC";
     }
 }
 
@@ -42,28 +29,63 @@ if (isset($_POST['addBook'])) {
 
 			<div class="sub-page-box">
 				<table class="container sub-page-table text-center">
-					<tr>
-                        <th>Book ID</th>
-						<th>Book ISBN</th>
-						<th>Book Year</th>
-                        <th>Book Title</th>
-						<th>Book Publisher</th>
-						<th>Book Co-Authoring Proffessor ID</th>
-					</tr>
+					
 					
                         <?php
                             require_once('../inc/config.php');
-                            $query="SELECT * FROM book";
-                        $userquery=mysqli_query($connection,$query);
-                        if(mysqli_num_rows($userquery)>0){
-                            while($row=mysqli_fetch_assoc($userquery)){
-                                    echo "<tr><td>".$row['bookID']."</td>";
-                                    echo "<td>".$row['bookISBN']."</td>";
-                                    echo "<td>".$row['bookYear']."</td>";
-                                    echo "<td>".$row['bookTitle']."</td>";
-                                    echo "<td>".$row['bookPublisher']."</td>";
-                                    echo "<td>".$row['profID']."</td></tr>";
-                                }                            
+                            $userquery=mysqli_query($connection,$query);
+                            if($usertype==2){
+                                echo "
+                                    <tr>
+                                        <th>Book ID</th>
+                                        <th>Book Name</th>
+                                        <th>Issue Date</th>
+                                        <th>Return Date</th>
+                                    </tr>
+                                ";
+
+                                if(mysqli_num_rows($userquery)>0){
+                                    while($row=mysqli_fetch_assoc($userquery)){
+                                        // Get Book Info
+                                        $bookid=$row['bookID'];
+                                        $bookquery="SELECT * FROM book WHERE bookID=$bookid LIMIT 1";
+                                        $bookinfo=mysqli_query($connection, $bookquery);
+                                        // echo $bookquery;
+                                        $book=mysqli_fetch_assoc($bookinfo);
+
+                                            echo "<tr><td>".$row['bookID']."</td>";
+                                            echo "<td>".$book['bookTitle']."</td>";
+                                            echo "<td>".$row['issuedDate']."</td>";
+                                            echo "<td>".$row['returnedDate']."</td>";
+                                    }                            
+                                }
+                            }else{
+                                echo "
+                                    <tr>
+                                        <th>Student ID</th>
+                                        <th>Book ID</th>
+                                        <th>Book Name</th>
+                                        <th>Issue Date</th>
+                                        <th>Return Date</th>
+                                    </tr>
+                                ";
+
+                                if(mysqli_num_rows($userquery)>0){
+                                    while($row=mysqli_fetch_assoc($userquery)){
+                                        // Get Book Info
+                                        $bookid=$row['bookID'];
+                                        $bookquery="SELECT * FROM book WHERE bookID=$bookid LIMIT 1";
+                                        $bookinfo=mysqli_query($connection, $bookquery);
+                                        // echo $bookquery;
+                                        $book=mysqli_fetch_assoc($bookinfo);
+
+                                            echo "<tr><td>".$row['stdID']."</td>";
+                                            echo "<td>".$row['bookID']."</td>";
+                                            echo "<td>".$book['bookTitle']."</td>";
+                                            echo "<td>".$row['issuedDate']."</td>";
+                                            echo "<td>".$row['returnedDate']."</td>";
+                                    }                            
+                                }
                             }
                         ?>
 				</table>

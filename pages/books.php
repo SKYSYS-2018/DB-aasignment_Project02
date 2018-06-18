@@ -24,7 +24,6 @@ if (isset($_POST['addBook'])) {
         echo "<script>alert('Try again')</script>";
     }
 }
-
  require_once('layout/header.php'); 
 
 ?>
@@ -69,7 +68,7 @@ if (isset($_POST['addBook'])) {
 				</table>
 			</div>
 		</div>
-
+        <div class="container sub-page border-default" style="display:none" id="hidden_div">
             <form action="books.php" autocomplete="on" method="POST">
                 <!-- Input for Book ID -->
                 <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
@@ -89,11 +88,11 @@ if (isset($_POST['addBook'])) {
                 <!-- Input for Book Co-Author Proffessor ID -->
                 <input type="text" name="profID" class="container inputs border-default" placeholder="Book Co-Author Proffessor ID" required/>
 
-                <!-- Login Button -->
-                <div class="btn-group">
-                    <button name="cancelBook" class="btn left" onclick="hide_add_book()"> Cancel </button>
-                    <button name="addBook" class="btn right"> Add Book </button>
-                </div>
+               
+                <!-- submit Button -->
+                <button name="add_lab_session" class="container btn">Add Book</button>
+                <!-- cancel Button -->
+                <button name="add_lab_session" onclick="hide_div()" class="container btn">Cancel</button>
 		  </form>
         </div>
 
