@@ -141,6 +141,8 @@ if (isset($_POST['add_lab_session'])) {
                 
                 <!-- submit Button -->
                 <button name="add_lab_session" class="container btn">Add Lab Session</button>
+                <!-- cancel Button -->
+                <button name="add_lab_session" onclick="hide_div()" class="container btn">Cancel</button>
 		  </form>
         </div>
 
