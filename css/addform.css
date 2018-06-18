@@ -9,11 +9,18 @@
     box-sizing: border-box;
 }
 
+.btn-group {
+	display: block;
+	width: 50%;
+	margin: 0px auto;
+	margin-top: 35px;
+	margin-bottom: 10px;
+	overflow: auto;
+}
+
 .btn {
 	display: block;
-	margin-top: 35px;
-    margin-bottom: 10px;
-	width: 60%;
+	width: 45%;
 	min-height: 50px;
 	font-size: 18px;
 	font-weight: bold;

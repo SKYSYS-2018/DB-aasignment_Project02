@@ -14,7 +14,7 @@ if (isset($_POST['addBook'])) {
     $query="INSERT INTO book VALUES('$bookID','$bookISBN','$bookYear','$bookTitle','$bookPublisher','$profID')";
 
     $userquery=mysqli_query($connection,$query);
-    echo "hello";
+    // echo "hello";
     if($userquery){
         echo "<script>alert('Book added successfully!')</script>";
         header("location: books.php");
@@ -32,8 +32,7 @@ if (isset($_POST['addBook'])) {
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
-    <link rel="stylesheet" type="text/css" href="../css/input.css">
-    <script src="../js/show_div.js"></script>
+
 </head>
 
 <body>
@@ -100,7 +99,7 @@ if (isset($_POST['addBook'])) {
 				</table>
 			</div>
 		</div>
-        <div id="hidden_div" style="display:none" class="container sub-page border-default">
+
             <form action="books.php" autocomplete="on" method="POST">
                 <!-- Input for Book ID -->
                 <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
@@ -121,7 +120,10 @@ if (isset($_POST['addBook'])) {
                 <input type="text" name="profID" class="container inputs border-default" placeholder="Book Co-Author Proffessor ID" required/>
 
                 <!-- Login Button -->
-                <button name="addBook" class="container btn">Add Book </button>
+                <div class="btn-group">
+                    <button name="cancelBook" class="btn left" onclick="hide_add_book()"> Cancel </button>
+                    <button name="addBook" class="btn right"> Add Book </button>
+                </div>
 		  </form>
         </div>
 
