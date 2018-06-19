@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2018 at 01:02 PM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Generation Time: Jun 19, 2018 at 07:55 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.1.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,6 +37,15 @@ CREATE TABLE `book` (
   `profID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`bookID`, `bookISBN`, `bookYear`, `bookTitle`, `bookPublisher`, `profID`) VALUES
+('1', '5568545', 2017, 'Software Engineering', 'Sarasavi', NULL),
+('2', '5568546', 2016, 'Data Structures', 'Gamage', NULL),
+('3', '5568549', 2014, 'Programming in C', 'Gunasena', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -47,7 +56,8 @@ CREATE TABLE `companysession` (
   `comSesName` varchar(100) NOT NULL,
   `sesYear` int(5) NOT NULL,
   `sesSem` int(5) NOT NULL,
-  `comSesAssesment` varchar(50) NOT NULL
+  `comSesAssesment` varchar(50) NOT NULL,
+  `comSesManager` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -77,6 +87,13 @@ CREATE TABLE `courses` (
   `courseCredits` int(3) NOT NULL,
   `courseHours` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`courseID`, `depID`, `courseName`, `courseCredits`, `courseHours`) VALUES
+('1', '1', 'CS', 34, 56);
 
 -- --------------------------------------------------------
 
@@ -108,6 +125,14 @@ CREATE TABLE `departments` (
   `profID` varchar(20) DEFAULT NULL,
   `locationID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`depID`, `depName`, `depPhone`, `profID`, `locationID`) VALUES
+('1', 'ABC', '0854565256', '5', '5'),
+('45', 'sadsad', '5465', '5', '5');
 
 -- --------------------------------------------------------
 
@@ -150,6 +175,13 @@ CREATE TABLE `location` (
   `locCity` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`locationID`, `locStreet`, `locStreeNo`, `locCity`) VALUES
+('5', 'Main street', '05', 'Borella');
+
 -- --------------------------------------------------------
 
 --
@@ -159,11 +191,18 @@ CREATE TABLE `location` (
 CREATE TABLE `professors` (
   `profID` varchar(20) NOT NULL,
   `profFName` varchar(50) NOT NULL,
-  `proLName` varchar(50) NOT NULL,
+  `profLName` varchar(50) NOT NULL,
   `profContact` varchar(20) NOT NULL,
   `profEmail` varchar(50) DEFAULT NULL,
   `depID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `professors`
+--
+
+INSERT INTO `professors` (`profID`, `profFName`, `profLName`, `profContact`, `profEmail`, `depID`) VALUES
+('5', 'Malaka ', 'Perera', '0758565254', 'abc@prof.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -179,6 +218,14 @@ CREATE TABLE `students` (
   `stdStreet` varchar(20) DEFAULT NULL,
   `stdCity` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`stdID`, `stdFName`, `stdLName`, `stdStreetNo`, `stdStreet`, `stdCity`) VALUES
+('1', 'Kamal', 'Perera', 'No 02', 'Samagi Mawatha', 'Colombo 02'),
+('2', 'Nimal', 'Gunarathne', 'No 10', 'Dharamapala Mawatha', 'Borella');
 
 -- --------------------------------------------------------
 
@@ -206,6 +253,14 @@ CREATE TABLE `stud_book_borrow` (
   `issuedDate` varchar(50) DEFAULT NULL,
   `returnedDate` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stud_book_borrow`
+--
+
+INSERT INTO `stud_book_borrow` (`stdID`, `bookID`, `issuedDate`, `returnedDate`) VALUES
+('1', '1', '2018/06/05', '2018/06/31'),
+('2', '2', '2018/06/01', '2018/06/05');
 
 -- --------------------------------------------------------
 
@@ -243,6 +298,28 @@ CREATE TABLE `undergraduatecompanysessions` (
   `sesYear` int(5) NOT NULL,
   `sesSem` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `username` varchar(30) NOT NULL,
+  `password` varchar(70) NOT NULL,
+  `type` int(1) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`username`, `password`, `type`, `user_id`) VALUES
+('admin1', 'e00cf25ad42683b3df678c61f42c6bda', 1, 1),
+('librarian1', '265e0a0c036c151896b94453b7aa2123', 3, 3),
+('student1', '5e5545d38a68148a2d5bd5ec9a89e327', 2, 2);
 
 --
 -- Indexes for dumped tables
@@ -369,6 +446,12 @@ ALTER TABLE `undergraduatecompanysessions`
   ADD PRIMARY KEY (`stdID`,`sesYear`,`sesSem`),
   ADD KEY `sesYear` (`sesYear`),
   ADD KEY `sesSem` (`sesSem`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`username`);
 
 --
 -- Constraints for dumped tables
