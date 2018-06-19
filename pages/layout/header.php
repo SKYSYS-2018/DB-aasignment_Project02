@@ -11,6 +11,7 @@ $usertype=$_SESSION['usertype'];
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
+	<link rel="stylesheet" type="text/css" href="../css/input.css">
 	<style type="text/css">
 		.sub-page-table th,td {
 			width: 16.5%;
