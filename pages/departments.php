@@ -76,6 +76,7 @@ require_once('layout/header.php'); ?>
 					$row="";
 					if(mysqli_num_rows($depcon)>0){
 						while($department=mysqli_fetch_assoc($depcon)){
+							$depid=$department['depID'];
 							$row=$row."<tr>
 							<td>$department[depID]</td>
 							<td>$department[depName]</td>
@@ -83,7 +84,7 @@ require_once('layout/header.php'); ?>
 							<td>$department[profFName] $department[profLName]</td>
 							<td>$department[locStreeNo] , $department[locStreet] , $department[locCity]</td>
 							<td>
-								<button class='table-btn'>EDIT</button>
+								<a href='models/department.php?id=$depid' target='new'><button class='table-btn'>EDIT</button>
 								<button class='table-btn'>DELETE</button>
 							</td>
 							</tr>";
