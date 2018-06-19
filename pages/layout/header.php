@@ -7,7 +7,7 @@ $usertype=$_SESSION['usertype'];
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Departments Managing</title>
+	<title>University Management System</title>
 	<link rel="stylesheet" type="text/css" href="../css/main.css">
 	<link rel="stylesheet" type="text/css" href="../css/nav.css">
 	<link rel="stylesheet" type="text/css" href="../css/subpage.css">
