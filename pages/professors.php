@@ -53,7 +53,8 @@ if (isset($_POST['add_professor'])) {
 						<th>Professor Last Name</th>
                         <th>Professor Contact</th>
 						<th>Professor Email</th>
-						<th>Department ID</th>
+                        <th>Department ID</th>
+						<th>Action</th>
 					</tr>
 					
                         <?php
@@ -62,12 +63,17 @@ if (isset($_POST['add_professor'])) {
                     $userquery=mysqli_query($connection,$query);
                         if(mysqli_num_rows($userquery)>0){
                             while($row=mysqli_fetch_assoc($userquery)){
+                                $id=$row['profID'];
                                     echo "<tr><td>".$row['profID']."</td>";
                                     echo "<td>".$row['profFName']."</td>";
                                     echo "<td>".$row['profLName']."</td>";
                                     echo "<td>".$row['profContact']."</td>";
                                     echo "<td>".$row['profEmail']."</td>";
                                     echo "<td>".$row['depID']."</td></tr>";
+                                    echo "<td><a href='queryboxes/professor.php?id=".$id."'   target='new'><button class='table-btn'>EDIT</button></a>
+                                <a href='./queryboxes/delete.php?professor='".$row['profID']."' >
+                                <button class='table-btn'>DELETE</button></a>
+                            </td>";
                                 }                            
                             }
                         ?>
