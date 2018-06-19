@@ -30,7 +30,7 @@ if(isset($_POST['add_course'])){
 	$courseinsquery="INSERT INTO courses(courseID,depID,courseName,courseCredits,courseHours) VALUES ('$courseID','$depID','$courseName','$courseCredits','$courseHours')";
 	$courseins=mysqli_query($connection,$courseinsquery);
 	if($courseins){
-		echo "<script>alert('submitted Succefully')</script>";
+		header("location: ./courses.php");
 	}else{
 		echo "<script>alert('submition Failed')</script>";
 	}
@@ -82,7 +82,8 @@ require_once('layout/header.php');
 							<td>$course[courseHours]</td>
 							<td>
 								<button class='table-btn'>EDIT</button>
-								<button class='table-btn'>DELETE</button>
+								<a href='./queryboxes/delete.php?course=$course[courseID]'>
+								<button class='table-btn'>DELETE</button></a>
 							</td>
 							</tr>";
 						}
