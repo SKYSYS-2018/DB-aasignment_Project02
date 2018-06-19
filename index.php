@@ -33,6 +33,8 @@ if(!isset($_SESSION['usertype'])) {
 					echo "ADMIN"; 
 				} elseif ($_SESSION["usertype"]==2) {
 					echo "STUDENT";
+				} else{
+					echo "LIBRARIAN";
 				}
 				echo" </div>";
 				echo "<a href='./pages/logout.php'><div class='logview-btn text-center'> LOG OUT </div></a>";

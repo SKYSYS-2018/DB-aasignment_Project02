@@ -5,7 +5,10 @@ require_once('../inc/config.php');
 
 if(!isset($_SESSION['usertype'])){
 	header("location: ./login.php");
+}elseif($_SESSION['usertype']!=1){
+	header("location: ../index.php");
 }
+
 
 // -----------------SELECT Quaries----------------------------//
 

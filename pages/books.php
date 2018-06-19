@@ -2,6 +2,12 @@
 
 session_start();
 
+if(!isset($_SESSION['usertype'])){
+    header("location: ./login.php");
+}elseif($_SESSION['usertype']==2){
+    header("location: ../index.php");
+}
+
 if (isset($_POST['addBook'])) {
 	
 	require_once('../inc/config.php');

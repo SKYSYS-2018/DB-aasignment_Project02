@@ -2,6 +2,10 @@
 
 session_start();
 
+if(!isset($_SESSION['usertype'])){
+    header("location: ./login.php");
+}
+
 if(isset($_SESSION['usertype'])){
     $usertype=$_SESSION['usertype'];
     $userid=$_SESSION['userid'];

@@ -1,5 +1,12 @@
 <?php 
+
 session_start();
+if(!isset($_SESSION['usertype'])){
+	header("location: ./login.php");
+}elseif($_SESSION['usertype']!=1){
+	header("location: ../index.php");
+}
+
 require_once('layout/header.php'); 
 ?>
 
