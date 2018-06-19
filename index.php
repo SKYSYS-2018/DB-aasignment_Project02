@@ -62,6 +62,8 @@ if(!isset($_SESSION['usertype'])) {
 				echo "<a href='./pages/courses.php' class='link-box green left text-center'> Courses </a>";
 				echo "<a href='./pages/studentbooks.php' class='link-box green right text-center'> Books </a>";
 				echo "<a href='./pages/lab_sessions.php' class='link-box green left text-center'> Lab Sessions </a>";
+				echo "<div class='link-box green right '></div>";
+
 			//Librarian Menu
 			}else{
 				echo "<a href='./pages/bookmenu.php' class='link-box green right text-center'> Books </a>";

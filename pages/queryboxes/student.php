@@ -42,9 +42,9 @@ if (isset($_POST['edit_student'])) {
 <head>
 	<title>Edit Student</title>
 	<link rel="stylesheet" type="text/css" href="../../css/main.css">
-      <link rel="stylesheet" type="text/css" href="../../css/nav.css">
-      <link rel="stylesheet" type="text/css" href="../../css/subpage.css">
-      <link rel="stylesheet" type="text/css" href="../../css/input.css">
+    <link rel="stylesheet" type="text/css" href="../../css/nav.css">
+    <link rel="stylesheet" type="text/css" href="../../css/subpage.css">
+    <link rel="stylesheet" type="text/css" href="../../css/input.css">
 </head>
 <body>
 
