@@ -62,7 +62,7 @@ require_once('layout/header.php');
 
 			<div class="sub-page-box">
                 <div class="sub-page-box">
-				    <button class="sub-page-btn border-default" onclick="show_div()"> Add a New Comany Session </button>
+				    <button class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add a New Comany Session </button>
 			     </div>
 				<table class="container sub-page-table text-center">
 					<tr>
@@ -142,7 +142,7 @@ require_once('layout/header.php');
                 <!-- submit Button -->
                 <button name="add_company_session" class="container btn">Add Company Session</button>
                 <!-- cancel Button -->
-                <button onclick="hide_div()" class="container btn">Cancel</button>
+                <button onclick="hide_div('hidden_div')" class="container btn">Cancel</button>
 		  </form>
         </div>
         <div class="container sub-page border-default" style="display:none" id="hidden_div2">
