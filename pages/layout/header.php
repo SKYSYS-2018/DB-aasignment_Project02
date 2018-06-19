@@ -16,6 +16,7 @@ $usertype=$_SESSION['usertype'];
 			width: 16.5%;
 		}
 	</style>
+	<script type="text/javascript" src="../js/show_div.js"></script>
 </head>
 
 <body>
