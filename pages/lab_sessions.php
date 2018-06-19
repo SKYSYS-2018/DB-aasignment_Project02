@@ -45,7 +45,7 @@ require_once('layout/header.php');
 			</div>
 
 			<div class="sub-page-box">
-				<button class="sub-page-btn border-default" name="add_lab_session" onclick="show_div()"> Add a New Lab Session </button>
+				<button class="sub-page-btn border-default" name="add_lab_session" onclick="show_div('hidden_div')"> Add a New Lab Session </button>
 			</div>
 
 			<div class="sub-page-box">
