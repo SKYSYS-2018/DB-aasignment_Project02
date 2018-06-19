@@ -94,7 +94,8 @@ require_once('layout/header.php');
 							<td>$state</td>
 							<td>
 								<button class='table-btn'>EDIT</button>
-								<a href='./queryboxes/delete.php?student=$student[stdID]'><button class='table-btn'>DELETE</button></a>
+								<a href='./queryboxes/delete.php?student=$student[stdID]'>
+								<button class='table-btn'>DELETE</button></a>
 							</td>
 							</tr>";
 						}
