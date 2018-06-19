@@ -16,6 +16,8 @@ if(!isset($_SESSION['usertype'])){
 $profquery="SELECT profID,profFName,profLName FROM professors";
 $profselect=mysqli_query($connection,$profquery);
 
+
+
 //Get a List of Locations
 
 $locations="SELECT * FROM location";
