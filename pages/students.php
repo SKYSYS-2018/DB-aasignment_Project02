@@ -30,7 +30,7 @@ if(isset($_POST['add_student'])){
 	$stdCity=$_POST['stdCity'];
 	$stdState=$_POST['stdState'];
 
-	$stdinsquery="INSERT INTO students(stdID, stdFName, stdLName, stdStreetNo, stdStreet, stdCity) VALUES ('$stdID','$stdFName','$stdLName','$stdStreetNo','$stdStreet','stdCity')";
+	$stdinsquery="INSERT INTO students(stdID, stdFName, stdLName, stdStreetNo, stdStreet, stdCity) VALUES ('$stdID','$stdFName','$stdLName','$stdStreetNo','$stdStreet','$stdCity')";
 
 	$stdins=mysqli_query($connection,$stdinsquery);
 
@@ -38,12 +38,12 @@ if(isset($_POST['add_student'])){
 		$statequery = "INSERT INTO undergraduate(stdID) VALUES ('$stdID')";
 		$stateins=mysqli_query($connection,$statequery);
 	} elseif ($stdState==2) {
-		$statequery = "INSERT INTO graduate('stdID') VALUES ('$stdID')";
+		$statequery = "INSERT INTO graduate(stdID) VALUES ('$stdID')";
 		$stateins=mysqli_query($connection,$statequery);
 	}
 
 	if($stdins){
-		echo "<script>alert('submitted Succefully')</script>";
+		header("location: ./students.php");
 	}else{
 		echo "<script>alert('submition Failed')</script>";
 	}
@@ -94,7 +94,7 @@ require_once('layout/header.php');
 							<td>$state</td>
 							<td>
 								<button class='table-btn'>EDIT</button>
-								<button class='table-btn'>DELETE</button>
+								<a href='./queryboxes/delete.php?student=$student[stdID]'><button class='table-btn'>DELETE</button></a>
 							</td>
 							</tr>";
 						}
