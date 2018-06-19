@@ -8,7 +8,7 @@ if(!isset($_SESSION['usertype'])){
     header("location: ../index.php");
 }
 
-if (isset($_POST['addBook'])) {
+if (isset($_POST['add_book'])) {
 	
 	require_once('../inc/config.php');
 
@@ -42,9 +42,20 @@ if (isset($_POST['addBook'])) {
 			</div>
 
 			<div class="sub-page-box">
-				<button name="add_new_book" class="sub-page-btn border-default" onclick="show_div()"> Add a New Book </button>
+				<button name="add_new_book" class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add a New Book </button>
+                <button name="delete_book" class="sub-page-btn border-default" onclick="show_div('hidden_delete_div')">Delete Book </button>
 			</div>
-
+            <div class="sub-page-box" style="display:none" id="hidden_delete_div">
+                <form action="./queryboxes/delete.php" autocomplete="on" method="GET">
+                <!-- Input for Book ID -->
+                <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
+                
+                <!-- delete Button -->
+                <button name="delete_book" class="container btn">Delete Book</button>
+                <!-- cancel Button -->
+                <button onclick="hide_div('hidden_delete_div')" class="container btn">Cancel</button>
+		      </form>
+            </div>
 			<div class="sub-page-box">
 				<table class="container sub-page-table text-center">
 					<tr>
@@ -96,9 +107,9 @@ if (isset($_POST['addBook'])) {
 
                
                 <!-- submit Button -->
-                <button name="add_lab_session" class="container btn">Add Book</button>
+                <button name="add_book" class="container btn">Add Book</button>
                 <!-- cancel Button -->
-                <button name="add_lab_session" onclick="hide_div()" class="container btn">Cancel</button>
+                <button onclick="hide_div('hidden_div')" class="container btn">Cancel</button>
 		  </form>
         </div>
 
