@@ -42,7 +42,7 @@ if (isset($_POST['add_professor'])) {
 			</div>
 
 			<div class="sub-page-box">
-				<button class="sub-page-btn border-default" onclick="show_div()"> Add a New Professor </button>
+				<button class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add a New Professor </button>
 			</div>
 
 			<div class="sub-page-box">
