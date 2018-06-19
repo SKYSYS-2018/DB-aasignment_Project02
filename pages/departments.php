@@ -11,11 +11,39 @@ if(!isset($_SESSION['usertype'])){
 
 // -----------------SELECT Quaries----------------------------//
 
-$depquery="SELECT D.depID,D.depName,D.depPhone,P.profFName,P.proLName,L.locStreeNo,L.locStreet,L.locCity 
+//Get a List of Professors
+
+$profquery="SELECT profID,profFName,profLName FROM professors";
+$profselect=mysqli_query($connection,$profquery);
+
+//Get a List of Locations
+
+$locations="SELECT * FROM location";
+$locationselect=mysqli_query($connection,$locations);
+
+$depquery="SELECT D.depID,D.depName,D.depPhone,P.profFName,P.profLName,L.locStreeNo,L.locStreet,L.locCity 
 		FROM departments AS D LEFT OUTER JOIN location AS L ON D.locationID = L.locationID 
 		LEFT OUTER JOIN professors AS P ON D.profID = P.profID;";
 
 $depcon=mysqli_query($connection,$depquery);
+
+
+// -----------------Insert Quaries----------------------------//
+if(isset($_POST['add_department'])){
+
+	$depID=$_POST['departmentId'];
+	$depName=$_POST['departmentName'];
+	$depPhone=$_POST['departmentContact'];
+	$profID=$_POST['departmentHead'];
+	$location=$_POST['departmentLocation'];
+	$depinsquery="INSERT INTO departments(depID, depName, depPhone, profID, locationID) VALUES ('$depID','$depName','$depPhone','$profID','$location')";
+	$depins=mysqli_query($connection,$depinsquery);
+	if($depins){
+		echo "<script>alert('submitted Succefully')</script>";
+	}else{
+		echo "<script>alert('submition Failed')</script>";
+	}
+}
 
 require_once('layout/header.php'); ?>
 
@@ -27,7 +55,7 @@ require_once('layout/header.php'); ?>
 			</div>
 
 			<div class="sub-page-box">
-				<button class="sub-page-btn border-default"> Add a New Department </button>
+				<button class="sub-page-btn border-default" onclick="show_div()"> Add a New Department </button>
 			</div>
 
 			<div class="sub-page-box">
@@ -50,7 +78,7 @@ require_once('layout/header.php'); ?>
 								<td>$department[depID]</td>
 								<td>$department[depName]</td>
 								<td>$department[depPhone]</td>
-								<td>$department[profFName] $department[proLName]</td>
+								<td>$department[profFName] $department[profLName]</td>
 								<td>$department[locStreeNo] , $department[locStreet] , $department[locCity]</td>
 								<td>
 									<button class='table-btn'>EDIT</button>
@@ -63,6 +91,47 @@ require_once('layout/header.php'); ?>
 					?>
 				</table>
 			</div>
+			<div class="container sub-page border-default" style="display:none" id="hidden_div">
+            <form action="departments.php" autocomplete="on" method="POST">
+                <!-- Department ID -->
+                <input type="text" name="departmentId" class="container inputs border-default" placeholder="Department ID" required/>
+                
+                <!-- Name -->
+                <input type="text" name="departmentName" class="container inputs border-default" placeholder="Department Name" required/>
+
+                <!-- Contact -->
+                <input type="text" name="departmentContact" class="container inputs border-default" placeholder="Contact Number" required/>
+
+                <!-- Head -->
+                <select name="departmentHead" required>
+                	<option selected disabled>Select Department Head</option>
+                	<?php 
+                		while ($head=mysqli_fetch_assoc($profselect)) {
+                			$profName=$head['profFName']." ".$head['profLName'];
+                			$value=$head['profID'];
+                			echo "<option value='$value'>$profName</option>";
+                		}
+                	?>
+                </select>
+
+                <!-- Location -->
+                <select name="departmentLocation" required>
+                	<option selected disabled>Select a Location</option>
+                	<?php 
+                		while ($loc=mysqli_fetch_assoc($locationselect)) {
+                			$adddress=$loc['locStreet'].", ".$loc['locStreeNo'].", ".$loc['locCity'];
+                			$value=$loc['locationID'];
+                			echo "<option value='$value'>$adddress</option>";
+                		}
+                	?>
+                </select>
+               
+                <!-- submit Button -->
+                <button name="add_department" type="submit" class="container btn">Add Department</button>
+                <!-- cancel Button -->
+                <button name="add_department_cancel" onclick="hide_div()" class="container btn">Cancel</button>
+		  </form>
+        </div>
 
 		</div>
 
