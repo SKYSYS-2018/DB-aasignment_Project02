@@ -2,6 +2,12 @@
 
 session_start();
 
+if(!isset($_SESSION['usertype'])){
+    header("location: ./login.php");
+}elseif($_SESSION['usertype']!=1){
+    header("location: ../index.php");
+}
+
 if (isset($_POST['add_lab_session'])) {
 	
 	require_once('../inc/config.php');
