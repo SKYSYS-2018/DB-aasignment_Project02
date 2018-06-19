@@ -16,10 +16,14 @@ if(!isset($_SESSION['usertype'])){
 $profquery="SELECT profID,profFName,profLName FROM professors";
 $profselect=mysqli_query($connection,$profquery);
 
+
+
 //Get a List of Locations
 
 $locations="SELECT * FROM location";
 $locationselect=mysqli_query($connection,$locations);
+
+// -----------------SELECT Quaries----------------------------//
 
 $depquery="SELECT D.depID,D.depName,D.depPhone,P.profFName,P.profLName,L.locStreeNo,L.locStreet,L.locCity 
 		FROM departments AS D LEFT OUTER JOIN location AS L ON D.locationID = L.locationID 
@@ -28,7 +32,8 @@ $depquery="SELECT D.depID,D.depName,D.depPhone,P.profFName,P.profLName,L.locStre
 $depcon=mysqli_query($connection,$depquery);
 
 
-// -----------------Insert Quaries----------------------------//
+// -----------------INSERT Quaries----------------------------//
+
 if(isset($_POST['add_department'])){
 
 	$depID=$_POST['departmentId'];
@@ -92,7 +97,8 @@ require_once('layout/header.php'); ?>
 			</table>
 		</div>
 	</div>
-		
+	
+	<!-- Department Add Form  -->
 	<div class="container sub-page border-default" style="display:none" id="add_department_form">
         <form action="departments.php" autocomplete="on" method="POST">
             <!-- Department ID -->
