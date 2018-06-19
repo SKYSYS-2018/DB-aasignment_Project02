@@ -1,6 +1,7 @@
-function show_div(){
-    document.getElementById("hidden_div").style.display="block";
+function show_div(divID){
+    document.getElementById(divID).style.display="block";
+    document.location.href = "#" + divID;
 }
-function hide_div(){
-    document.getElementById("hidden_div").style.display="none";
+function hide_div(divID){
+    document.getElementById(divID).style.display="none";
 }
