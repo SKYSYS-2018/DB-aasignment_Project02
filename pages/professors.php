@@ -1,8 +1,36 @@
-
-<?php 
+<?php
 
 session_start();
-require_once('layout/header.php'); 
+
+if(!isset($_SESSION['usertype'])){
+    header("location: ./login.php");
+}elseif($_SESSION['usertype']==2){
+    header("location: ../index.php");
+}
+
+if (isset($_POST['add_professor'])) {
+	
+	require_once('../inc/config.php');
+
+	$profID=$_POST['profID'];
+    $profFName=$_POST['profFName'];
+    $profLName=$_POST['profLName'];
+    $profContact=$_POST['profContact'];
+    $profEmail=$_POST['profEmail'];
+    $depID=$_POST['depID'];
+    
+    $query="INSERT INTO professors VALUES('$profID','$profFName','$profLName','$profContact','$profEmail','$depID')";
+
+    $userquery=mysqli_query($connection,$query);
+    
+    if($userquery){
+        echo "<script>alert('Professor added successfully!')</script>";
+        header("location: professors.php");
+    }else{
+        echo "<script>alert('Try again')</script>";
+    }
+}
+ require_once('layout/header.php'); 
 
 ?>
 
@@ -14,30 +42,65 @@ require_once('layout/header.php');
 			</div>
 
 			<div class="sub-page-box">
-				<button class="sub-page-btn border-default"> Add a New Professor </button>
+				<button class="sub-page-btn border-default" onclick="show_div()"> Add a New Professor </button>
 			</div>
 
 			<div class="sub-page-box">
 				<table class="container sub-page-table text-center">
 					<tr>
-						<th>Column 1</th>
-						<th>Column 2</th>
-						<th>Column 3</th>
-						<th>Column 4</th>
+                        <th>Professor ID</th>
+						<th>Professor First Name</th>
+						<th>Professor Last Name</th>
+                        <th>Professor Contact</th>
+						<th>Professor Email</th>
+						<th>Department ID</th>
 					</tr>
-					<tr>
-						<td>data 1</td>
-						<td>data 2</td>
-						<td>data 3</td>
-						<td>data 4</td>
-					</tr>
+					
+                        <?php
+                            require_once('../inc/config.php');
+                            $query="SELECT * FROM professors";
+                    $userquery=mysqli_query($connection,$query);
+                        if(mysqli_num_rows($userquery)>0){
+                            while($row=mysqli_fetch_assoc($userquery)){
+                                    echo "<tr><td>".$row['profID']."</td>";
+                                    echo "<td>".$row['profFName']."</td>";
+                                    echo "<td>".$row['profLName']."</td>";
+                                    echo "<td>".$row['profContact']."</td>";
+                                    echo "<td>".$row['profEmail']."</td>";
+                                    echo "<td>".$row['depID']."</td></tr>";
+                                }                            
+                            }
+                        ?>
 				</table>
 			</div>
-
 		</div>
+        <div class="container sub-page border-default" style="display:none" id="hidden_div">
+            <form action="professors.php" autocomplete="on" method="POST">
+                
+                <!-- Input for Professor ID -->
+                <input type="text" name="profID" class="container inputs border-default" placeholder="Professor ID" required/>
+                
+                <!-- Input for Professor First Name -->
+                <input type="text" name="profFName" class="container inputs border-default" placeholder="Professor First Name" required/>
 
+                <!-- Input for Professor Last Name -->
+                <input type="text" name="profLName" class="container inputs border-default" placeholder="Professor Last Name" required/>
+
+                <!-- Input for Professor Contact -->
+                <input type="text" name="profContact" class="container inputs border-default" placeholder="Professor Contact" required/>
+
+                <!-- Input for Professor Email -->
+                <input type="text" name="profEmail" class="container inputs border-default" placeholder="Professor Email" required/>
+
+                <!-- Input for Department ID -->
+                <input type="text" name="depID" class="container inputs border-default" placeholder="Department ID" required/>
+
+                <!-- submit Button -->
+                <button name="add_professor" class="container btn">Add Professor</button>
+                <!-- cancel Button -->
+                <button onclick="hide_div()" class="container btn">Cancel</button>
+		  </form>
+        </div>
 	</div>
-
 </body>
-
 </html>
