@@ -87,13 +87,14 @@ require_once('layout/header.php');
 							} else {
 								$state="Not Mentioned";
 							}
+							$id=$student['stdID'];
 							$row=$row."<tr>
 							<td>$student[stdID]</td>
 							<td>$student[stdFName] $student[stdLName]</td>
 							<td>$student[stdStreetNo] , $student[stdStreet] , $student[stdCity]</td>
 							<td>$state</td>
 							<td>
-								<button class='table-btn'>EDIT</button>
+								<a href='queryboxes/student.php?id=$id' target='new'><button class='table-btn'>EDIT</button></a>
 								<a href='./queryboxes/delete.php?student=$student[stdID]'><button class='table-btn'>DELETE</button></a>
 							</td>
 							</tr>";
