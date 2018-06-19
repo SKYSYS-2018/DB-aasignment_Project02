@@ -19,7 +19,7 @@ if (isset($_POST['add_company_session'])) {
     $comSesManager=$_POST['comSesManager'];
     
     $query="INSERT INTO companysession VALUES('$comSesName','$sesYear','$sesSem','$comSesAssesment','$comSesManager')";
-
+    echo $query;
     $userquery=mysqli_query($connection,$query);
     
     if($userquery){
@@ -39,7 +39,7 @@ if (isset($_POST['add_company_session_manager'])) {
     $empLName=$_POST['empLName'];
     
     $query="INSERT INTO company_sess_manager VALUES('$empID','$empFName','$empLName','$sesYear','$sesSem')";
-
+    echo $query;
     $userquery=mysqli_query($connection,$query);
     
     if($userquery){
