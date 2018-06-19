@@ -47,96 +47,93 @@ if(isset($_POST['add_department'])){
 
 require_once('layout/header.php'); ?>
 
-		<!-- Sub Page -->
-		<div class="container sub-page border-default">
+	<!-- Sub Page -->
+	<div class="container sub-page border-default">
 
-			<div class="sub-page-box">
-				<div class="container sub-page-title text-center border-default"> DEPARTMENTS </div>
-			</div>
-
-			<div class="sub-page-box">
-				<button class="sub-page-btn border-default" onclick="show_div()"> Add a New Department </button>
-			</div>
-
-			<div class="sub-page-box">
-				<table class="container sub-page-table text-center">
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Contact</th>
-						<th>Head</th>
-						<th>Location</th>
-						<th>Actions</th>
-					</tr>
-
-					<!-- Show Department and Location Table Data -->
-					<?php
-						$row="";
-						if(mysqli_num_rows($depcon)>0){
-							while($department=mysqli_fetch_assoc($depcon)){
-								$row=$row."<tr>
-								<td>$department[depID]</td>
-								<td>$department[depName]</td>
-								<td>$department[depPhone]</td>
-								<td>$department[profFName] $department[profLName]</td>
-								<td>$department[locStreeNo] , $department[locStreet] , $department[locCity]</td>
-								<td>
-									<button class='table-btn'>EDIT</button>
-									<button class='table-btn'>DELETE</button>
-								</td>
-								</tr>";
-							}
-							echo $row;
-						}
-					?>
-				</table>
-			</div>
-			<div class="container sub-page border-default" style="display:none" id="hidden_div">
-            <form action="departments.php" autocomplete="on" method="POST">
-                <!-- Department ID -->
-                <input type="text" name="departmentId" class="container inputs border-default" placeholder="Department ID" required/>
-                
-                <!-- Name -->
-                <input type="text" name="departmentName" class="container inputs border-default" placeholder="Department Name" required/>
-
-                <!-- Contact -->
-                <input type="text" name="departmentContact" class="container inputs border-default" placeholder="Contact Number" required/>
-
-                <!-- Head -->
-                <select name="departmentHead" required>
-                	<option selected disabled>Select Department Head</option>
-                	<?php 
-                		while ($head=mysqli_fetch_assoc($profselect)) {
-                			$profName=$head['profFName']." ".$head['profLName'];
-                			$value=$head['profID'];
-                			echo "<option value='$value'>$profName</option>";
-                		}
-                	?>
-                </select>
-
-                <!-- Location -->
-                <select name="departmentLocation" required>
-                	<option selected disabled>Select a Location</option>
-                	<?php 
-                		while ($loc=mysqli_fetch_assoc($locationselect)) {
-                			$adddress=$loc['locStreet'].", ".$loc['locStreeNo'].", ".$loc['locCity'];
-                			$value=$loc['locationID'];
-                			echo "<option value='$value'>$adddress</option>";
-                		}
-                	?>
-                </select>
-               
-                <!-- submit Button -->
-                <button name="add_department" type="submit" class="container btn">Add Department</button>
-                <!-- cancel Button -->
-                <button name="add_department_cancel" onclick="hide_div()" class="container btn">Cancel</button>
-		  </form>
-        </div>
-
+		<div class="sub-page-box">
+			<div class="container sub-page-title text-center border-default"> DEPARTMENTS </div>
 		</div>
 
-	</div>
+		<div class="sub-page-box">
+			<button class="sub-page-btn border-default" onclick="show_div('add_department_form')"> Add a New Department </button>
+		</div>
 
+		<div class="sub-page-box">
+			<table class="container sub-page-table text-center">
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Contact</th>
+					<th>Head</th>
+					<th>Location</th>
+					<th>Actions</th>
+				</tr>
+
+				<!-- Show Department and Location Table Data -->
+				<?php
+					$row="";
+					if(mysqli_num_rows($depcon)>0){
+						while($department=mysqli_fetch_assoc($depcon)){
+							$row=$row."<tr>
+							<td>$department[depID]</td>
+							<td>$department[depName]</td>
+							<td>$department[depPhone]</td>
+							<td>$department[profFName] $department[profLName]</td>
+							<td>$department[locStreeNo] , $department[locStreet] , $department[locCity]</td>
+							<td>
+								<button class='table-btn'>EDIT</button>
+								<button class='table-btn'>DELETE</button>
+							</td>
+							</tr>";
+						}
+						echo $row;
+					}
+				?>
+			</table>
+		</div>
+	</div>
+		
+	<div class="container sub-page border-default" style="display:none" id="add_department_form">
+        <form action="departments.php" autocomplete="on" method="POST">
+            <!-- Department ID -->
+            <input type="text" name="departmentId" class="container inputs border-default" placeholder="Department ID" required/>
+            
+            <!-- Name -->
+            <input type="text" name="departmentName" class="container inputs border-default" placeholder="Department Name" required/>
+
+            <!-- Contact -->
+            <input type="text" name="departmentContact" class="container inputs border-default" placeholder="Contact Number" required/>
+
+            <!-- Head -->
+            <select name="departmentHead" class="container select border-default" required>
+            	<option selected disabled>Select Department Head</option>
+            	<?php 
+            		while ($head=mysqli_fetch_assoc($profselect)) {
+            			$profName=$head['profFName']." ".$head['profLName'];
+            			$value=$head['profID'];
+            			echo "<option value='$value'>$profName</option>";
+            		}
+            	?>
+            </select>
+
+            <!-- Location -->
+            <select name="departmentLocation" class="container select border-default" required>
+            	<option selected disabled>Select a Location</option>
+            	<?php 
+            		while ($loc=mysqli_fetch_assoc($locationselect)) {
+            			$adddress=$loc['locStreet'].", ".$loc['locStreeNo'].", ".$loc['locCity'];
+            			$value=$loc['locationID'];
+            			echo "<option value='$value'>$adddress</option>";
+            		}
+            	?>
+            </select>
+           
+            <!-- submit Button -->
+            <button name="add_department" type="submit" class="container btn">Add Department</button>
+            <!-- cancel Button -->
+            <button name="add_department_cancel" onclick="hide_div('add_department_form')" class="container btn">Cancel</button>
+	  	</form>
+    </div>
 </body>
 
 </html>
