@@ -25,6 +25,8 @@ elseif (isset($_POST['login'])) {
 
         if($userlogin["type"]==1){
             header("location: ../index.php");
+        }elseif($userlogin["type"]==3){
+            header("location: ../pages/bookmenu.php");
         }
 
     }else{
