@@ -62,8 +62,8 @@ require_once('layout/header.php');
 
 			<div class="sub-page-box">
                 <div class="sub-page-box">
-				    <button class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add a New Comany Session </button>
-                    <button name="delete_lab_session" class="sub-page-btn border-default" onclick="show_div('hidden_delete_div')">Delete Company Session </button>
+				    <button class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add a New Company Session </button>
+                    <button name="delete_company_session" class="sub-page-btn border-default" onclick="show_div('hidden_delete_div')">Delete Company Session </button>
 			     </div>
                 <div class="sub-page-box" style="display:none" id="hidden_delete_div">
                 <form action="./queryboxes/delete.php" autocomplete="on" method="GET">

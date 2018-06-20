@@ -32,6 +32,7 @@ if(isset($_GET['department'])){
 	$delq=mysqli_query($connection, $deleq);
 	header("location: ../lab_sessions.php");
 }elseif(isset($_GET['delete_company_session'])){
+	echo "<script>alert('FDSD')</script>";
 	$comSesName=$_GET['comSesName'];
     $secYear=$_GET['secYear'];
     $secNo=$_GET['secNo'];
