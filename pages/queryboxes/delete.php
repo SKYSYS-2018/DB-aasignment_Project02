@@ -30,8 +30,8 @@ if(isset($_GET['student'])){
 	echo "<script>alert('FDSD')</script>";
 	$comSesName=$_GET['comSesName'];
     $secYear=$_GET['secYear'];
-    $secNo=$_GET['secNo'];
-	$deleq="DELETE FROM companysession WHERE comSesName='$comSesName' AND secYear='$secYear' AND secNo='$secNo'";
+    $sesSem=$_GET['sesSem'];
+	$deleq="DELETE FROM companysession WHERE comSesName='$comSesName' AND sesYear='$secYear' AND sesSem='$sesSem'";
 	$delq=mysqli_query($connection, $deleq);
 	header("location: ../company_sessions.php");
 }elseif(isset($_GET['delete_company_session_manager'])){
