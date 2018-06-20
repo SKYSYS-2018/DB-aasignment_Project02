@@ -40,3 +40,9 @@ if(isset($_GET['student'])){
 	$delq=mysqli_query($connection, $deleq);
 	header("location: ../company_sessions.php");
 }
+elseif(isset($_GET['delete_location'])){
+	$locID=$_GET['locID'];
+	$deleq="DELETE FROM location WHERE locID='$locID'";
+	$delq=mysqli_query($connection, $deleq);
+	header("location: ../locations.php");
+}

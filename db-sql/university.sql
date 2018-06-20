@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2018 at 10:25 AM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.1.8
+-- Generation Time: Jun 19, 2018 at 07:55 AM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.1.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,9 +42,9 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`bookID`, `bookISBN`, `bookYear`, `bookTitle`, `bookPublisher`, `profID`) VALUES
-('1', '5568545', 2017, 'Software Engineering', 'Sarasavi', '5'),
-('2', '5568546', 2016, 'Data Structures', 'Gamage', '5'),
-('3', '5568549', 2014, 'Programming in C', 'Gunasena', '5');
+('1', '5568545', 2017, 'Software Engineering', 'Sarasavi', NULL),
+('2', '5568546', 2016, 'Data Structures', 'Gamage', NULL),
+('3', '5568549', 2014, 'Programming in C', 'Gunasena', NULL);
 
 -- --------------------------------------------------------
 
@@ -60,13 +60,6 @@ CREATE TABLE `companysession` (
   `comSesManager` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `companysession`
---
-
-INSERT INTO `companysession` (`comSesName`, `sesYear`, `sesSem`, `comSesAssesment`, `comSesManager`) VALUES
-('sysco meet clients', 1, 1, 'meet clients', '12');
-
 -- --------------------------------------------------------
 
 --
@@ -80,13 +73,6 @@ CREATE TABLE `company_sess_manager` (
   `sesYear` int(5) DEFAULT NULL,
   `sesSem` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `company_sess_manager`
---
-
-INSERT INTO `company_sess_manager` (`empID`, `empFName`, `empLName`, `sesYear`, `sesSem`) VALUES
-('12', 'P.K.', 'Dias', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -126,13 +112,6 @@ CREATE TABLE `course_sections` (
   `secTime` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `course_sections`
---
-
-INSERT INTO `course_sections` (`courseID`, `secSem`, `secYear`, `secNo`, `secName`, `secClass`, `secClassSize`, `secTime`) VALUES
-('1', 1, 1, 1, 'Data Structures And Algorithm', '125', 180, '245');
-
 -- --------------------------------------------------------
 
 --
@@ -152,8 +131,8 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`depID`, `depName`, `depPhone`, `profID`, `locationID`) VALUES
-('1', 'School Of Computing', '0854565256', '5', '5'),
-('45', 'School Of Engineering', '5465', '5', '5');
+('1', 'ABC', '0854565256', '5', '5'),
+('45', 'sadsad', '5465', '5', '5');
 
 -- --------------------------------------------------------
 
@@ -164,13 +143,6 @@ INSERT INTO `departments` (`depID`, `depName`, `depPhone`, `profID`, `locationID
 CREATE TABLE `graduate` (
   `stdID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `graduate`
---
-
-INSERT INTO `graduate` (`stdID`) VALUES
-('1');
 
 -- --------------------------------------------------------
 
@@ -189,13 +161,6 @@ CREATE TABLE `labsession` (
   `location` varchar(100) DEFAULT NULL,
   `stdID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `labsession`
---
-
-INSERT INTO `labsession` (`courseID`, `secSem`, `secYear`, `secNo`, `labSessionNo`, `labTopic`, `labTime`, `location`, `stdID`) VALUES
-('1', 1, 1, 1, 1, 'Stack Implementation', '2', 'Lab A', '1');
 
 -- --------------------------------------------------------
 
@@ -260,8 +225,7 @@ CREATE TABLE `students` (
 
 INSERT INTO `students` (`stdID`, `stdFName`, `stdLName`, `stdStreetNo`, `stdStreet`, `stdCity`) VALUES
 ('1', 'Kamal', 'Perera', 'No 02', 'Samagi Mawatha', 'Colombo 02'),
-('2', 'Nimal', 'Gunarathne', 'No 10', 'Dharamapala Mawatha', 'Borella'),
-('3', 'Namal', 'Ranjith', 'Halawata', 'Kuruduwatta', 'Colombo');
+('2', 'Nimal', 'Gunarathne', 'No 10', 'Dharamapala Mawatha', 'Borella');
 
 -- --------------------------------------------------------
 
@@ -276,13 +240,6 @@ CREATE TABLE `student_course_section` (
   `secNo` int(5) NOT NULL,
   `stdID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `student_course_section`
---
-
-INSERT INTO `student_course_section` (`courseID`, `secSem`, `secYear`, `secNo`, `stdID`) VALUES
-('1', 1, 1, 1, '1');
 
 -- --------------------------------------------------------
 
@@ -303,9 +260,7 @@ CREATE TABLE `stud_book_borrow` (
 
 INSERT INTO `stud_book_borrow` (`stdID`, `bookID`, `issuedDate`, `returnedDate`) VALUES
 ('1', '1', '2018/06/05', '2018/06/31'),
-('1', '2', '2018/09/6', '2018/07/09'),
-('1', '3', '2018/06/01', '2018/06/09'),
-('2', '3', '2018/06/01', '2018/06/09');
+('2', '2', '2018/06/01', '2018/06/05');
 
 -- --------------------------------------------------------
 
@@ -322,13 +277,6 @@ CREATE TABLE `teachingbooks` (
   `bookID` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `teachingbooks`
---
-
-INSERT INTO `teachingbooks` (`profID`, `courseID`, `secSem`, `secYear`, `secNo`, `bookID`) VALUES
-('5', '1', 1, 1, 1, '1');
-
 -- --------------------------------------------------------
 
 --
@@ -338,13 +286,6 @@ INSERT INTO `teachingbooks` (`profID`, `courseID`, `secSem`, `secYear`, `secNo`,
 CREATE TABLE `undergraduate` (
   `stdID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `undergraduate`
---
-
-INSERT INTO `undergraduate` (`stdID`) VALUES
-('3');
 
 -- --------------------------------------------------------
 
@@ -357,13 +298,6 @@ CREATE TABLE `undergraduatecompanysessions` (
   `sesYear` int(5) NOT NULL,
   `sesSem` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `undergraduatecompanysessions`
---
-
-INSERT INTO `undergraduatecompanysessions` (`stdID`, `sesYear`, `sesSem`) VALUES
-('3', 1, 1);
 
 -- --------------------------------------------------------
 
