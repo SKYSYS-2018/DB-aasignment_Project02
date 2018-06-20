@@ -54,7 +54,6 @@ if (isset($_POST['add_professor'])) {
                         <th>Professor Contact</th>
 						<th>Professor Email</th>
                         <th>Department ID</th>
-						<th>Action</th>
 					</tr>
 					
                         <?php
@@ -70,10 +69,6 @@ if (isset($_POST['add_professor'])) {
                                     echo "<td>".$row['profContact']."</td>";
                                     echo "<td>".$row['profEmail']."</td>";
                                     echo "<td>".$row['depID']."</td></tr>";
-                                    echo "<td><a href='queryboxes/professor.php?id=".$id."'   target='new'><button class='table-btn'>EDIT</button></a>
-                                <a href='./queryboxes/delete.php?professor='".$row['profID']."' >
-                                <button class='table-btn'>DELETE</button></a>
-                            </td>";
                                 }                            
                             }
                         ?>
