@@ -88,7 +88,7 @@ require_once('layout/header.php'); ?>
 							<td>$department[locStreeNo] , $department[locStreet] , $department[locCity]</td>
 							<td>
 								<a href='queryboxes/department.php?id=$depid' target='new'><button class='table-btn'>EDIT</button></a>
-								<button class='table-btn'>DELETE</button>
+								<a href='./queryboxes/delete.php?department=$department[depID]'><button class='table-btn'>DELETE</button></a>
 							</td>
 							</tr>";
 						}
