@@ -19,7 +19,7 @@ if (isset($_POST['add_company_session'])) {
     $comSesManager=$_POST['comSesManager'];
     
     $query="INSERT INTO companysession VALUES('$comSesName','$sesYear','$sesSem','$comSesAssesment','$comSesManager')";
-
+    echo $query;
     $userquery=mysqli_query($connection,$query);
     
     if($userquery){
@@ -39,7 +39,7 @@ if (isset($_POST['add_company_session_manager'])) {
     $empLName=$_POST['empLName'];
     
     $query="INSERT INTO company_sess_manager VALUES('$empID','$empFName','$empLName','$sesYear','$sesSem')";
-
+    echo $query;
     $userquery=mysqli_query($connection,$query);
     
     if($userquery){
@@ -63,7 +63,26 @@ require_once('layout/header.php');
 			<div class="sub-page-box">
                 <div class="sub-page-box">
 				    <button class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add a New Comany Session </button>
+                    <button name="delete_lab_session" class="sub-page-btn border-default" onclick="show_div('hidden_delete_div')">Delete Company Session </button>
 			     </div>
+                <div class="sub-page-box" style="display:none" id="hidden_delete_div">
+                <form action="./queryboxes/delete.php" autocomplete="on" method="GET">
+                
+                    <!-- Input for Company Session Name -->
+                    <input type="text" name="comSesName" class="container inputs border-default" placeholder="Company Session Name" required/>
+
+                    <!-- Input for Section Year -->
+                    <input type="text" name="sesYear" class="container inputs border-default" placeholder="Section Year" required/>
+
+                    <!-- Input for Section Semester -->
+                    <input type="text" name="sesSem" class="container inputs border-default" placeholder="Section Semester" required/>
+                    
+                    <!-- delete Button -->
+                    <button name="delete_company_session" class="container btn">Delete Company Session</button>
+                    <!-- cancel Button -->
+                    <button onclick="hide_div('hidden_delete_div')" class="container btn">Cancel</button>
+		      </form>
+            </div>
 				<table class="container sub-page-table text-center">
 					<tr>
                         <th>Company Session Name</th>
@@ -90,8 +109,21 @@ require_once('layout/header.php');
 			</div>
             <div class="sub-page-box">
                 <div class="sub-page-box">
-				    <button class="sub-page-btn border-default" onclick="document.getElementById('hidden_div2').style.display='block'"> Add a New Comany Session Manager </button>
+				    <button class="sub-page-btn border-default" onclick="show_div('hidden_div2')"> Add a New Comany Session Manager </button>
+                    <button name="delete_company_session_manager" class="sub-page-btn border-default" onclick="show_div('hidden_delete_div2')">Delete Company Session Manager</button>
 			     </div>
+                <div class="sub-page-box" style="display:none" id="hidden_delete_div2">
+                <form action="./queryboxes/delete.php" autocomplete="on" method="GET">
+                
+                    <!-- Input for Company Session Manager ID -->
+                    <input type="text" name="empID" class="container inputs border-default" placeholder="Company Session Manager ID" required/>
+                    
+                    <!-- delete Button -->
+                    <button name="delete_company_session_manager" class="container btn">Delete Company Session Manager</button>
+                    <!-- cancel Button -->
+                    <button onclick="hide_div('hidden_delete_div2')" class="container btn">Cancel</button>
+		      </form>
+            </div>
 				<table class="container sub-page-table text-center">
 					<tr>
                         <th>Company Session Manager</th>

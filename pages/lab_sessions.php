@@ -46,8 +46,32 @@ require_once('layout/header.php');
 
 			<div class="sub-page-box">
 				<button class="sub-page-btn border-default" name="add_lab_session" onclick="show_div('hidden_div')"> Add a New Lab Session </button>
+                <button name="delete_lab_session" class="sub-page-btn border-default" onclick="show_div('hidden_delete_div')">Delete Lab Session </button>
 			</div>
+            <div class="sub-page-box" style="display:none" id="hidden_delete_div">
+                <form action="./queryboxes/delete.php" autocomplete="on" method="GET">
+                
+                    <!-- Input for Course ID -->
+                    <input type="text" name="courseID" class="container inputs border-default" placeholder="Course ID" required/>
 
+                    <!-- Input for Section Semester -->
+                    <input type="text" name="secSem" class="container inputs border-default" placeholder="Section Semester" required/>
+
+                    <!-- Input for Section Year -->
+                    <input type="text" name="secYear" class="container inputs border-default" placeholder="Section Year" required/>
+
+                    <!-- Input for Section Number -->
+                    <input type="text" name="secNo" class="container inputs border-default" placeholder="Section Number" required/>
+
+                    <!-- Input for Lab Session Number -->
+                    <input type="text" name="labSessionNo" class="container inputs border-default" placeholder="Lab Session Number" required/>
+
+                    <!-- delete Button -->
+                    <button name="delete_lab_session" class="container btn">Delete Lab Session</button>
+                    <!-- cancel Button -->
+                    <button onclick="hide_div('hidden_delete_div')" class="container btn">Cancel</button>
+		      </form>
+            </div>
 			<div class="sub-page-box">
 				<table class="container sub-page-table text-center">                    
 					<tr>
@@ -115,7 +139,7 @@ require_once('layout/header.php');
                 
                 <!-- submit Button -->
                 <button name="add_lab_session" class="container btn">Add Lab Session</button>
-                <button name="add_lab_session" onclick="hide_div()" class="container btn">Cancel</button>
+                <button name="add_lab_session" onclick="hide_div('hidden_div')" class="container btn">Cancel</button>
 		  </form>
         </div>
 
