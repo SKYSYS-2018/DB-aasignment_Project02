@@ -30,6 +30,7 @@ if (isset($_POST['edit_course'])) {
      $upcon=mysqli_query($connection,$updatequery);
      if($upcon){
         echo "<script>alert('Update Successfull');</script>";
+        header("location: ../courses.php");
      }else{
         echo "<script>alert('Update Failed');</script>";
      }
