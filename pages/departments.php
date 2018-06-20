@@ -45,6 +45,7 @@ if(isset($_POST['add_department'])){
 	$depins=mysqli_query($connection,$depinsquery);
 	if($depins){
 		echo "<script>alert('submitted Succefully')</script>";
+		header("location: department.php");
 	}else{
 		echo "<script>alert('submition Failed')</script>";
 	}
