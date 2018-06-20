@@ -26,7 +26,7 @@ $usertype=$_SESSION['usertype'];
 
 		<!-- Title Box -->
 		<div class="container title-box border-default">
-			<a href="./index.php"><div class="title left">UNIVERSITY SYSTEM</div></a>
+			<div class="title left">UNIVERSITY SYSTEM</div>
 			<div class="logview-box right">
 				<!-- Logged user view and logout button -->
 				<?php

@@ -95,8 +95,6 @@ require_once('layout/header.php');
 
 		</div>
 
-	</div>
-
 	<div class="container sub-page border-default" style="display:none" id="add_course_form">
         <form action="courses.php" autocomplete="on" method="POST">
             <!-- course ID -->
@@ -128,7 +126,6 @@ require_once('layout/header.php');
             <button name="add_course_cancel" onclick="hide_div('add_course_form')" class="container btn">Cancel</button>
 	  	</form>
     </div>
-
 </body>
 
 </html>
