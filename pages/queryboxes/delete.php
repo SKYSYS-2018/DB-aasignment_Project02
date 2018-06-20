@@ -2,12 +2,7 @@
 
 require_once('../../inc/config.php');
 
-if(isset($_GET['department'])){
-	$department=$_GET['department'];
-	$deleq="DELETE FROM departments WHERE depID=$department";
-	$delq=mysqli_query($connection, $deleq);
-	header("location: ../departments.php");
-} elseif(isset($_GET['student'])){
+if(isset($_GET['student'])){
 	$student=$_GET['student'];
 	$deleq="DELETE FROM students WHERE stdID=$student";
 	$delq=mysqli_query($connection, $deleq);
