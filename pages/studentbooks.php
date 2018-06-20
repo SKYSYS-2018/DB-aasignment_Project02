@@ -15,6 +15,26 @@ if(isset($_SESSION['usertype'])){
         $query="SELECT * FROM stud_book_borrow ORDER BY issuedDate ASC";
     }
 }
+if (isset($_POST['add_book_borrow'])) {
+	
+	require_once('../inc/config.php');
+
+	$stdID=$_POST['stdID'];
+    $bookID=$_POST['bookID'];
+    $issuedDate=$_POST['issuedDate'];
+    $returnedDate=$_POST['returnedDate'];
+    
+    $query2="INSERT INTO stud_book_borrow VALUES('$stdID','$bookID','$issuedDate','$returnedDate')";
+
+    $userquery2=mysqli_query($connection,$query2);
+    // echo "hello";
+    if($userquery2){
+        echo "<script>alert('Book Borrow Details added successfully!')</script>";
+        header("location: studentbooks.php");
+    }else{
+        echo "<script>alert('Try again')</script>";
+    }
+}
 
  require_once('layout/header.php'); 
 
@@ -28,7 +48,7 @@ if(isset($_SESSION['usertype'])){
 			</div>
 
 			<div class="sub-page-box">
-				<button name="add_new_book" class="sub-page-btn border-default" onclick="show_div()"> Add a New Book </button>
+				<button name="add_book_borrow" class="sub-page-btn border-default" onclick="show_div('hidden_div')"> Add Book Borrowing Details </button>
 			</div>
 
 			<div class="sub-page-box">
@@ -73,7 +93,7 @@ if(isset($_SESSION['usertype'])){
                                         <th>Return Date</th>
                                     </tr>
                                 ";
-
+                                
                                 if(mysqli_num_rows($userquery)>0){
                                     while($row=mysqli_fetch_assoc($userquery)){
                                         // Get Book Info
@@ -95,6 +115,28 @@ if(isset($_SESSION['usertype'])){
 				</table>
 			</div>
 		</div>
+        <div class="container sub-page border-default" style="display:none" id="hidden_div">
+            <form action="studentbooks.php" autocomplete="on" method="POST">
+                
+                <!-- Input for Student ID -->
+                <input type="text" name="stdID" class="container inputs border-default" placeholder="Student ID" required/>
+                
+                <!-- Input for Book ID -->
+                <input type="text" name="bookID" class="container inputs border-default" placeholder="Book ID" required/>
+                
+                <!-- Input for Issued Date -->
+                <input type="text" name="issuedDate" class="container inputs border-default" placeholder="Issued Date" required/>
+
+                <!-- Input for Returned Date -->
+                <input type="text" name="returnedDate" class="container inputs border-default" placeholder="Returned Date" required/>
+
+                <!-- submit Button -->
+                <button name="add_book_borrow" class="container btn">Add Book Borrow</button>
+                <!-- cancel Button -->
+                <button onclick="hide_div('hidden_div')" class="container btn">Cancel</button>
+		  </form>
+        </div>
+
         </div>
 
 	</div>
