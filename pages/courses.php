@@ -81,7 +81,7 @@ require_once('layout/header.php');
 							<td>$course[courseCredits]</td>
 							<td>$course[courseHours]</td>
 							<td>
-								<button class='table-btn'>EDIT</button>
+								<a href='queryboxes/course.php?id=$course[courseID]' target='new'><button class='table-btn'>EDIT</button></a>
 								<a href='./queryboxes/delete.php?course=$course[courseID]'>
 								<button class='table-btn'>DELETE</button></a>
 							</td>
