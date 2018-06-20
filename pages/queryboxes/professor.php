@@ -33,6 +33,7 @@ if (isset($_POST['edit_professor'])) {
      }else{
         echo "<script>alert('Update Failed');</script>";
      }
+     echo "<script>window.close();</script>";
 }
 
 ?>

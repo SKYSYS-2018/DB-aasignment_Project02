@@ -29,6 +29,7 @@ if (isset($_POST['edit_department'])) {
      }else{
         echo "<script>alert('Update Failed');</script>";
      }
+     echo "<script>window.close();</script>";
 }
 
 
