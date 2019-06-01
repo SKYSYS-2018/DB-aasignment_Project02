@@ -8,28 +8,21 @@
 - Username : "student1" , Password : "student1"
 - Username : "librarian1" , Password : "librarian1"
 
-# PartyPros
-## An online system for event planning.
+# DB-aasignment_Project02
+## An simple online management system for a university.
 
 ## Introduction
 
-PartyPros is an party and event planning system which offers a proven solution for those looking to plan a birthday party, open bar, alumni reunion, corporate function or other celebration.
+DB-aasignment_Project02 is simple online management system for a university. System is capable with managing Students, Department, Courses, Professors, Books, Lab sessions & Company sessions.
 
 ## Main Functionalities 
-### Login , Sing up Function
-- Separate login sign up function for Client and End users.
-- Specialized login procedure for Administrators.
+### Login Function
+- Separate login function for Admin, Student and Librarian.
 
 ### User Function
-- ***Administrators 	:*** Allow Adding Deleting and Editing system data.
-- ***Clients		:*** Allow Adding Deleting and Editing service details.
-- **Customers** :Allow to Purchase items. Get invoices and to update their profiles.
-
-### Business Function
-- Initiate Client/End user registration via forms. 
-- Implements data views for the services provided by clients.
-- Ability to Upload Image Files for the service provided by the clients.
-- Implement a Backup/ Restore procedure.
+- ***Administrators 	:*** Allow Adding Deleting and Editing system data (CRUD).
+- ***Students		:*** Allow Viewing Books, Lab sessions and Courses and Adding Book borrowing details.
+- **Librarian** :Allow Adding Deleting Editing All Books, Student Borrowing Details and Teaching Books.
 
 ## Used Technologies
 - PHP for server side
@@ -42,9 +35,9 @@ PartyPros is an party and event planning system which offers a proven solution f
 ## Installation
 ***Preferred Editor : Any PHP supported editor***
  - Clone the repository in to your local machine htdocs folder of your xampp or wamp server.
- - Import unisys.sql file in db-sql folder to your MySQL database from phpMyAdmin or any method.
+ - Import university.sql file in db-sql folder to your MySQL database from phpMyAdmin or any method.
  -Start MySQL and Apache Server from the Xampp or wamp server control panel.
-- Browse the cloned index.php file by typing the http://localhost/partyPros in your browser address bar.
+- Browse the cloned index.php file by typing the http://localhost/DB-aasignment_Project02 in your browser address bar.
 	
 ## Screen Captures
 ![Home Page](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros01.PNG)
@@ -82,12 +75,12 @@ PartyPros is an party and event planning system which offers a proven solution f
 </table>
 
 ## Contributing
-Warmly welcome to developers for contributing **PartyPros** Project. Make sure to open an issue and communicate with us before 
+Warmly welcome to developers for contributing **DB-aasignment_Project02** Project. Make sure to open an issue and communicate with us before 
 creating a Pull Request.
 
 
 ## License
 
-The **PartyPros** System is open-sourced software solution licensed under the [GNU General Public License v3.0](./LICENSE).
+The **DB-aasignment_Project02** System is open-sourced software solution licensed under the [GNU General Public License v3.0](./LICENSE).
 
 
