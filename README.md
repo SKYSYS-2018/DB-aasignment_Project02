@@ -36,7 +36,7 @@ DB-aasignment_Project02 is simple online management system for a university. Sys
 ***Preferred Editor : Any PHP supported editor***
  - Clone the repository in to your local machine htdocs folder of your xampp or wamp server.
  - Import university.sql file in db-sql folder to your MySQL database from phpMyAdmin or any method.
- -Start MySQL and Apache Server from the Xampp or wamp server control panel.
+ - Start MySQL and Apache Server from the Xampp or wamp server control panel.
 - Browse the cloned index.php file by typing the http://localhost/DB-aasignment_Project02 in your browser address bar.
 	
 ## Screen Captures
