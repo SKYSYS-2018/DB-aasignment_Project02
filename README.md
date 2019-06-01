@@ -12,7 +12,7 @@ DB-aasignment_Project02 is simple online management system for a university. Sys
 ### User Function
 - ***Administrators 	:*** Allow Adding Deleting and Editing system data (CRUD).
 - ***Students		:*** Allow Viewing Books, Lab sessions and Courses and Adding Book borrowing details.
-- **Librarian** :Allow Adding Deleting Editing All Books, Student Borrowing Details and Teaching Books.
+- ***Librarian          :*** Allow Adding Deleting Editing All Books, Student Borrowing Details and Teaching Books.
 
 ## Used Technologies
 - PHP for server side
