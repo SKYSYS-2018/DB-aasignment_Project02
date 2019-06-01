@@ -42,9 +42,11 @@ DB-aasignment_Project02 is simple online management system for a university. Sys
 ## Screen Captures
 ![Login Page](https://github.com/SKYSYSLK/DB-aasignment_Project02/blob/master/readme_assests/login.png)
 
-![Admin Page](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros04.PNG)
+![Admin Page](https://github.com/SKYSYSLK/DB-aasignment_Project02/blob/master/readme_assests/admin.png)
 
-![Admin Page2](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros05.PNG)
+![Student Page](https://github.com/SKYSYSLK/DB-aasignment_Project02/blob/master/readme_assests/stud.png)
+
+![Librarian Page](https://github.com/SKYSYSLK/DB-aasignment_Project02/blob/master/readme_assests/lib.png)
 
 ### Developed By SKYSYS Group
 <table>
