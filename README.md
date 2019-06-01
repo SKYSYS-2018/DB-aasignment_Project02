@@ -1,5 +1,5 @@
 # DB-aasignment_Project02
-## An simple online management system for a university.
+## A simple web based university management system.
 
 ## Introduction
 
