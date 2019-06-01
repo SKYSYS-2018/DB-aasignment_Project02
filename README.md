@@ -40,11 +40,7 @@ DB-aasignment_Project02 is simple online management system for a university. Sys
 - Browse the cloned index.php file by typing the http://localhost/DB-aasignment_Project02 in your browser address bar.
 	
 ## Screen Captures
-![Home Page](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros01.PNG)
-
-![Registration Page](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros02.PNG)
-
-![Login Page](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros03.PNG)
+![Login Page](https://github.com/SKYSYSLK/DB-aasignment_Project02/blob/master/readme_assests/login.png)
 
 ![Admin Page](https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/partypros04.PNG)
 
