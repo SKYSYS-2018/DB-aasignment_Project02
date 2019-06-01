@@ -1,3 +1,7 @@
+<kbd>
+<img align="right" src="https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/logo-01.png" width=300>
+</kbd>
+
 # DB-aasignment_Project02
 ## A simple web based university management system.
 
@@ -53,12 +57,6 @@ DB-aasignment_Project02 is simple online management system for a university. Sys
 <td align="center"><a href="https://github.com/RavinduSachintha">Ravindu Sachintha</a></td>
 <td align="center"><a href="https://github.com/AsithaIndrajith">Asitha Indrajith</a></td>
 <td align="center"><a href="https://github.com/ShehanKule">Shehan Kulathilake</a></td>
-</tr>
-</table>
-
-<table align="center">
-<td align="center">
-<img src="https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/logo-01.png" width=300>
 </tr>
 </table>
 
