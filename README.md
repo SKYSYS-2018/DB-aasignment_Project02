@@ -1,6 +1,6 @@
-<kbd>
-<img align="right" src="https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/logo-01.png" width=300>
-</kbd>
+<div>
+<img align="right" style="border: 1px solid black;" src="https://raw.githubusercontent.com/SKYSYSLK/PartyPros/master/partypros_readme_assets/logo-01.png" width=00>
+</div>
 
 # DB-aasignment_Project02
 ## A simple web based university management system.
